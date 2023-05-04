@@ -10,6 +10,16 @@ package logica;
  */
 public class Fachada {
     
-    //instanciar los controles
+    //inicializar los controles...
+    
+    //instancia estatica de fachada
+    private static Fachada instancia = new Fachada();
+
+    public static Fachada getInstancia() {
+        return instancia;
+    }
+
+    private Fachada() {
+    }
     
 }
