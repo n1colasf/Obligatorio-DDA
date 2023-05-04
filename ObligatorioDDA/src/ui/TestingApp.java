@@ -171,12 +171,12 @@ public class TestingApp extends javax.swing.JFrame {
 
     private void LoginPropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginPropBtnActionPerformed
         // TODO add your handling code here:
-        new LoginPropietario(this, false).setVisible(true);
+        new LoginProp(this, false).setVisible(true);
     }//GEN-LAST:event_LoginPropBtnActionPerformed
 
     private void LoginAdmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtnActionPerformed
         // TODO add your handling code here:
-        new LoginAdminitrador(this, false).setVisible(true);
+        new LoginAdmin(this, false).setVisible(true);
 
     }//GEN-LAST:event_LoginAdmBtnActionPerformed
 
