@@ -53,7 +53,12 @@ public class LoginAdmin extends javax.swing.JDialog {
             }
         });
 
-        LoginAdmBtn.setText("Ingresar");
+        LoginAdmBtn.setText("INGRESAR");
+        LoginAdmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginAdmBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +108,12 @@ public class LoginAdmin extends javax.swing.JDialog {
     private void LoginAdmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LoginAdmPassActionPerformed
+
+    private void LoginAdmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtnActionPerformed
+        // TODO add your handling code here:
+                new ConsolaAdmin(null, false).setVisible(true);
+
+    }//GEN-LAST:event_LoginAdmBtnActionPerformed
 
     /**
      * @param args the command line arguments
