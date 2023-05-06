@@ -55,7 +55,7 @@ public class ConsolaAdmin extends javax.swing.JDialog {
         });
 
         LoginAdmBtn1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        LoginAdmBtn1.setText("TRÁNSITO");
+        LoginAdmBtn1.setText("EMULAR TRÁNSITO");
         LoginAdmBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginAdmBtn1ActionPerformed(evt);
@@ -145,6 +145,9 @@ public class ConsolaAdmin extends javax.swing.JDialog {
 
     private void LoginAdmBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtn1ActionPerformed
         // TODO add your handling code here:
+        new TransitoAdmin(null, false).setVisible(true);
+
+        
     }//GEN-LAST:event_LoginAdmBtn1ActionPerformed
 
     private void LoginAdmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtn2ActionPerformed

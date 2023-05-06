@@ -53,7 +53,7 @@ public class LoginAdmin extends javax.swing.JDialog {
             }
         });
 
-        LoginAdmBtn.setText("Ingresar");
+        LoginAdmBtn.setText("INGRESAR");
         LoginAdmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginAdmBtnActionPerformed(evt);

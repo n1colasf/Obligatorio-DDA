@@ -49,7 +49,7 @@ public class LoginProp extends javax.swing.JDialog {
             }
         });
 
-        LoginPropBtn.setText("Ingresar");
+        LoginPropBtn.setText("INGRESAR");
         LoginPropBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginPropBtnActionPerformed(evt);
