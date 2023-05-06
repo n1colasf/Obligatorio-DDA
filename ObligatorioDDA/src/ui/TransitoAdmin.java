@@ -55,7 +55,7 @@ public class TransitoAdmin extends javax.swing.JDialog {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CONSOLA - EMULAR TRÁNSITO");
+        setTitle("CONSOLA DE ADMINISTRACIÓN");
 
         jLabel1.setText("Puestos:");
 
@@ -71,10 +71,7 @@ public class TransitoAdmin extends javax.swing.JDialog {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Categoría", "Monto"

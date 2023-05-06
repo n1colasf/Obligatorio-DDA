@@ -141,7 +141,7 @@ public class ConsolaAdmin extends javax.swing.JDialog {
 
     private void LoginAdmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtnActionPerformed
         // TODO add your handling code here:
-        new AprobRecargaAdmin(null, false).setVisible(true);
+        new RecargasAdmin(null, false).setVisible(true);
 
     }//GEN-LAST:event_LoginAdmBtnActionPerformed
 
@@ -154,6 +154,7 @@ public class ConsolaAdmin extends javax.swing.JDialog {
 
     private void LoginAdmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtn2ActionPerformed
         // TODO add your handling code here:
+        new BonificacionesAdmin(null, false).setVisible(true);
     }//GEN-LAST:event_LoginAdmBtn2ActionPerformed
 
     private void LoginAdmBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtn3ActionPerformed
