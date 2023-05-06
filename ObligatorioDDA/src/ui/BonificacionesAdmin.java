@@ -45,6 +45,11 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jToggleButton2 = new javax.swing.JToggleButton();
         LoginAdmBtn4 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CONSOLA DE ADMINISTRACIÓN");
@@ -102,6 +107,21 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                 LoginAdmBtn4ActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Consola");
+
+        jMenuItem1.setText("Emular tránsito");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Aprobar recargas");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Cerrar sesión");
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,7 +201,7 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                     .addComponent(jToggleButton2))
                 .addGap(33, 33, 33)
                 .addComponent(LoginAdmBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jLabel21)
                 .addContainerGap())
         );
@@ -254,6 +274,11 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
