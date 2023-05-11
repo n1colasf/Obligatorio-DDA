@@ -42,13 +42,13 @@ public class RecargaProp extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel13.setText("$ 1.877,50");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/Nicolas/Downloads/money.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/money.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Darío Campalans");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/Nicolas/Downloads/user.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
 
         jLabel3.setText("Monto a recargar: ");
 
@@ -88,7 +88,7 @@ public class RecargaProp extends javax.swing.JDialog {
                                 .addGap(32, 32, 32)
                                 .addComponent(LoginAdmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(LoginAdmBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(49, Short.MAX_VALUE))))
+                        .addContainerGap(17, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

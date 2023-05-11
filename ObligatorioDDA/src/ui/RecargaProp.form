@@ -46,7 +46,7 @@
                           </Group>
                           <Component id="LoginAdmBtn" alignment="1" min="-2" pref="455" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -88,7 +88,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/Nicolas/Downloads/money.png"/>
+          <Image iconType="3" name="/img/money.png"/>
         </Property>
       </Properties>
     </Component>
@@ -104,7 +104,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/Nicolas/Downloads/user.png"/>
+          <Image iconType="3" name="/img/user.png"/>
         </Property>
       </Properties>
     </Component>

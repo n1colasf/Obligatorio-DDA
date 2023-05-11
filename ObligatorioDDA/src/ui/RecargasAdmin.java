@@ -61,8 +61,6 @@ public class RecargasAdmin extends javax.swing.JDialog {
         CerrarSesionPropBtn.setBackground(new java.awt.Color(255, 255, 255));
         CerrarSesionPropBtn.setText("Cerrar sesión");
 
-        jLabel18.setIcon(new javax.swing.ImageIcon("/Users/Nicolas/Downloads/charging-station.png")); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CONSOLA DE ADMINISTRACIÓN");
 
@@ -73,7 +71,7 @@ public class RecargasAdmin extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Recargas pendientes");
 
-        jLabel21.setIcon(new javax.swing.ImageIcon("/Users/Nicolas/Downloads/Logo-solo-CVU-Gris.png")); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-solo-CVU-Gris.png"))); // NOI18N
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,7 +145,7 @@ public class RecargasAdmin extends javax.swing.JDialog {
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(CerrarSesionPropBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
                 .addContainerGap())
         );
