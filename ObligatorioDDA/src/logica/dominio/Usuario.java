@@ -22,17 +22,13 @@ public abstract class Usuario {
     }
     
     //GETTERS
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
+    public int getCedula() {
+        return cedula;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPassword() {
+        return password;
     }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-    
-    
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }   
 }
