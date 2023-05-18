@@ -1,7 +1,7 @@
 # Obligatorio Diseño y Desarrollo de Aplicaciones (DDA)
 
 
-<img align="right" alt="Ventana Principal" src="https://iili.io/HgnlDOb.md.png" />
+<img align="right" width="55%" alt="Ventana Principal" src="https://bg-so-1.zippyimage.com/2023/05/18/7942d31900faea18ff9bafe08307b52a.png" />
 
 ## Objetivo: 
 El objetivo del presente trabajo obligatorio es modelar e implementar la primera versión prototipo de un sistema de peajes
@@ -14,8 +14,8 @@ El objetivo del presente trabajo obligatorio es modelar e implementar la primera
 - Interfaz gráfica de escritorio
 
 ### Requerimientos de diseño para esta versión:
-- Maximizar la modularidad y claridad del código. Para esto utilice el indicador que dice que ningún método debería tener más código que el que se puede visualizar en una pantalla.
-- Minimizar la duplicación de código. Evitar métodos o porciones de código que realizan la misma tarea.</br>
+- Maximizar la modularidad y claridad del código.
+- Minimizar la duplicación de código, evitar métodos o porciones de código que realizan la misma tarea.</br>
 - División física de las clases en paquetes.
 - División lógica.
 - Uso del patrón de diseño “Fachada”.
