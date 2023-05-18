@@ -4,6 +4,8 @@
  */
 package logica.sistema;
 
+import logica.dominio.Puesto;
+
 /**
  *
  * @author Nicolas
@@ -12,6 +14,8 @@ public class Fachada {
     
     //INICIALIZAR CONTROLES
     private SistemaAcceso sAcceso = new SistemaAcceso();
+    private SistemaPeaje sPeaje = new SistemaPeaje();
+
 
     //INSTANCIA ESTATICA
     private static Fachada instancia = new Fachada();
@@ -25,11 +29,19 @@ public class Fachada {
     private Fachada() {
     }
     
+    //AGREGAR PROPIETARIO
     public void agregarPropietario(int cedula,String pass,String nombreCompleto){
         sAcceso.agregarPropietario(cedula, pass, nombreCompleto);
     }
     
+    //AGREGAR ADMINISTRADOR
     public void agregarAdministrador(int cedula,String pass,String nombreCompleto){
         sAcceso.agregarAdministrador(cedula, pass, nombreCompleto);  
     } 
+    
+    //AGREGAR PUESTO
+     public void agregarPuesto(String pass,String nombreCompleto){
+        sPeaje.agregarPuesto(pass, nombreCompleto);
+    }
+    
 }
