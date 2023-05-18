@@ -4,6 +4,9 @@
  */
 package ui;
 
+import ui.admin.LoginAdmin;
+import ui.prop.LoginProp;
+
 /**
  *
  * @author Nicolas
@@ -81,7 +84,7 @@ public class TestingApp extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DE PEAJES");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-CVU-Gris.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cvu.png"))); // NOI18N
         jLabel6.setSize(new java.awt.Dimension(30, 16));
 
         MenuItemAcerca.setText("Info");

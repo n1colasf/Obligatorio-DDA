@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ui;
+package ui.admin;
 
 /**
  *
@@ -44,7 +44,7 @@ public class ConsolaAdmin extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CONSOLA DE ADMINISTRACIÓN");
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-solo-CVU-Gris.png"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cvu-icon.png"))); // NOI18N
 
         LoginAdmBtn.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         LoginAdmBtn.setText("APROBACIÓN DE RECARGAS");
@@ -131,7 +131,7 @@ public class ConsolaAdmin extends javax.swing.JDialog {
                 .addComponent(LoginAdmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(LoginAdmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(LoginAdmBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ui;
+package ui.prop;
 
 /**
  *
@@ -12,6 +12,8 @@ public class TableroControlProp extends javax.swing.JDialog {
 
     /**
      * Creates new form TableroControlProp
+     * @param parent
+     * @param modal
      */
     public TableroControlProp(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -121,6 +123,11 @@ public class TableroControlProp extends javax.swing.JDialog {
 
         CerrarSesionPropBtn.setBackground(new java.awt.Color(255, 255, 255));
         CerrarSesionPropBtn.setText("CERRAR SESIÓN");
+        CerrarSesionPropBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionPropBtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/money.png"))); // NOI18N
 
@@ -133,7 +140,7 @@ public class TableroControlProp extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/car-2.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/car.png"))); // NOI18N
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/coupon.png"))); // NOI18N
 
@@ -300,7 +307,7 @@ public class TableroControlProp extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
@@ -331,7 +338,7 @@ public class TableroControlProp extends javax.swing.JDialog {
                                 .addComponent(RecargarPropBtn))
                             .addComponent(jLabel18)))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -356,6 +363,10 @@ public class TableroControlProp extends javax.swing.JDialog {
         // TODO add your handling code here:
         new RecargaProp(null, true).setVisible(true);
     }//GEN-LAST:event_RecargarPropBtnActionPerformed
+
+    private void CerrarSesionPropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionPropBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CerrarSesionPropBtnActionPerformed
 
     /**
      * @param args the command line arguments

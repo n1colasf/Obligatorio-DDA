@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ui;
+package ui.prop;
 
 /**
  *
@@ -12,12 +12,13 @@ public class LoginProp extends javax.swing.JDialog {
 
     /**
      * Creates new form LoginPropietario
+     * @param parent
+     * @param modal
      */
     public LoginProp(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
     }
 
     /**

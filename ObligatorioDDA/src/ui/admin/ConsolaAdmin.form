@@ -74,7 +74,7 @@
               <Component id="LoginAdmBtn" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="LoginAdmBtn2" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
               <Component id="LoginAdmBtn3" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -94,7 +94,7 @@
     <Component class="javax.swing.JLabel" name="jLabel21">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/Logo-solo-CVU-Gris.png"/>
+          <Image iconType="3" name="/img/cvu-icon.png"/>
         </Property>
       </Properties>
     </Component>

@@ -4,7 +4,7 @@
  */
 package inicio;
 
-import logica.Fachada;
+import logica.sistema.Fachada;
 
 /**
  *

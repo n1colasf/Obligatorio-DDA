@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ui;
+package ui.admin;
 
 /**
  *
@@ -71,7 +71,7 @@ public class RecargasAdmin extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Recargas pendientes");
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-solo-CVU-Gris.png"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cvu-icon.png"))); // NOI18N
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,8 +85,18 @@ public class RecargasAdmin extends javax.swing.JDialog {
 
         CerrarSesionPropBtn1.setBackground(new java.awt.Color(255, 255, 255));
         CerrarSesionPropBtn1.setText("CERRAR");
+        CerrarSesionPropBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionPropBtn1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton1.setText("APROBAR");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Consola");
 
@@ -152,6 +162,14 @@ public class RecargasAdmin extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CerrarSesionPropBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionPropBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CerrarSesionPropBtn1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments

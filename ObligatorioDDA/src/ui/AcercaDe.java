@@ -63,11 +63,11 @@ public class AcercaDe extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Nicolás Fernández (147800) - Franco Pereyra (XXXXXX) - Guillermo Reboledo (XXXXXX)");
+        jLabel6.setText("Nicolás Fernández (147800) - Franco Pereyra (284679) - Guillermo Reboledo (204671)");
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("junio 2023");
+        jLabel7.setText("Junio 2023");
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo-ort.png"))); // NOI18N
