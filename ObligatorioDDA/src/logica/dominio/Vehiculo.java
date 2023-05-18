@@ -33,23 +33,18 @@ public class Vehiculo {
     public String getMatricula() {
         return matricula;
     }
-
     public String getModelo() {
         return modelo;
     }
-
     public String getColor() {
         return color;
     }
-
     public Propietario getPropietario() {
         return propietario;
     }
-
     public Categoria getCategoria() {
         return categoria;
     }
-
     public ArrayList<Transito> getTransitos() {
         return transitos;
     } 

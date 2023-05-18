@@ -33,6 +33,5 @@ public class Bonificacion {
     public ArrayList<Puesto> getPuestos() {
         return puestos;
     }
-    
-    
+   
 }

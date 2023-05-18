@@ -14,15 +14,13 @@ public class Asignacion {
     //ATRIBUTOS
     private Date fecha = new Date();
     private Bonificacion bonificacion;
-    private Puesto puesto;
     private Propietario propietario;
     private Administrador administrador;
     
     //CONSTRUCTOR
-    public Asignacion(Date fecha, Bonificacion bonificacion, Puesto puesto, Propietario propietario, Administrador administrador) {
+    public Asignacion(Date fecha, Bonificacion bonificacion, Propietario propietario, Administrador administrador) {
         this.fecha = fecha;
         this.bonificacion = bonificacion;
-        this.puesto = puesto;
         this.propietario = propietario;
         this.administrador = administrador;
     }
@@ -31,25 +29,14 @@ public class Asignacion {
     public Date getFecha() {
         return fecha;
     }
-
     public Bonificacion getBonificacion() {
         return bonificacion;
     }
-
-    public Puesto getPuesto() {
-        return puesto;
-    }
-
     public Propietario getPropietario() {
         return propietario;
     }
-
     public Administrador getAdministrador() {
         return administrador;
     }
-    
-    
 
-    
-    
 }

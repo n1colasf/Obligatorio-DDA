@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Administrador extends Usuario {
     //ATRIBUTOS
-    private ArrayList<Asignacion> asignaciones = new ArrayList();
     private ArrayList<Recarga> recargas = new ArrayList();
     
     //CONSTRUCTOR
@@ -21,13 +20,7 @@ public class Administrador extends Usuario {
     }
     
     //GETTERS
-    public ArrayList<Asignacion> getAsignaciones() {
-        return asignaciones;
-    }
-
     public ArrayList<Recarga> getRecargas() {
         return recargas;
     }
-    
-    
 }

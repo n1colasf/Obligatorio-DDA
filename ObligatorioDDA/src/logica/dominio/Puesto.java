@@ -28,22 +28,17 @@ public class Puesto {
     public String getNombre() {
         return nombre;
     }
-
     public String getDireccion() {
         return direccion;
     }
-
     public ArrayList<Tarifa> getTarifas() {
         return tarifas;
     }
-
     public ArrayList<Transito> getTransitos() {
         return transitos;
     }
-
     public ArrayList<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
-    
     
 }

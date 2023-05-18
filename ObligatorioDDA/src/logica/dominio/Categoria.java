@@ -13,27 +13,22 @@ import java.util.ArrayList;
 public class Categoria {
     //ATRIBUTOS
     private String nombre;
-    private Tarifa tarifa;
+    private ArrayList<Tarifa> tarifas = new ArrayList();
     private ArrayList<Vehiculo> vehiculos;
     
     //CONSTRUCTOR
-    public Categoria(String nombre, Tarifa tarifa) {
+    public Categoria(String nombre) {
         this.nombre = nombre;
-        this.tarifa = tarifa;
     }
     
     //GETTERS
     public String getNombre() {
         return nombre;
     }
-
-    public Tarifa getTarifa() {
-        return tarifa;
+    public ArrayList<Tarifa> getTarifas() {
+        return tarifas;
     }
-
     public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
-     
-    
 }
