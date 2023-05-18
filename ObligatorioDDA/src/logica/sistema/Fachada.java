@@ -10,16 +10,26 @@ package logica.sistema;
  */
 public class Fachada {
     
-    //inicializar los controles...
-    
-    //instancia estatica de fachada
+    //INICIALIZAR CONTROLES
+    private SistemaAcceso sAcceso = new SistemaAcceso();
+
+    //INSTANCIA ESTATICA
     private static Fachada instancia = new Fachada();
 
+    //GET INSTANCIA
     public static Fachada getInstancia() {
         return instancia;
     }
-
+    
+    //CONSTRUCTOR
     private Fachada() {
     }
     
+    public void agregarPropietario(int cedula,String pass,String nombreCompleto){
+        sAcceso.agregarPropietario(cedula, pass, nombreCompleto);
+    }
+    
+    public void agregarAdministrador(int cedula,String pass,String nombreCompleto){
+        sAcceso.agregarAdministrador(cedula, pass, nombreCompleto);  
+    } 
 }
