@@ -5,7 +5,10 @@
 package logica.sistema;
 
 import java.util.ArrayList;
+import logica.dominio.Categoria;
+import logica.dominio.Propietario;
 import logica.dominio.Puesto;
+import logica.dominio.Recarga;
 
 /**
  *
@@ -14,10 +17,24 @@ import logica.dominio.Puesto;
 public class SistemaPeaje {
      //ATRIBUTOS
     private ArrayList<Puesto> puestos = new ArrayList();
+    private ArrayList<Recarga> recargas = new ArrayList();
+    private ArrayList<TipoBonificacion> tipoBonificaciones= new ArrayList();
+    private ArrayList<Categoria> categorias = new ArrayList();
     
     //FUNCIONES AGREGAR
     public void agregarPuesto(String pass,String nombreCompleto){
         puestos.add(new Puesto(pass, nombreCompleto));
     }
     
+    public void agregarRecarga(int monto, Propietario propietario) {
+        recargas.add(new Recarga(monto, propietario));
+    }
+    
+    public void agregarTipoBonificacion(String nombre){
+        tipoBonificaciones.add(new TipoBonificacion(nombre));
+    }
+    
+    public void agregarCategoria(String nombre) {
+        categorias.add(new Categoria(nombre));
+    }
 }

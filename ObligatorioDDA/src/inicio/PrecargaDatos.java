@@ -43,7 +43,17 @@ public class PrecargaDatos {
         fachada.agregarPuesto("Solís", "Ruta Interbalnearia km 81");
         fachada.agregarPuesto("Santa Lucía", "Ruta 11 km 81");
         
-        //
+        //TIPO DE BONIFICACIONES
+        fachada.agregarTipoBonificacion("Exonerados");
+        fachada.agregarTipoBonificacion("Frecuentes");
+        fachada.agregarTipoBonificacion("Trabajadores");
+        
+        //CATEGORIAS
+        fachada.agregarCategoria("Auto");
+        fachada.agregarCategoria("Moto");
+        fachada.agregarCategoria("Camión");
+        fachada.agregarCategoria("Autobus");
+        fachada.agregarCategoria("Camioneta");
     }
     
     

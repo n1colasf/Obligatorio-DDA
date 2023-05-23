@@ -4,6 +4,7 @@
  */
 package logica.sistema;
 
+import logica.dominio.Propietario;
 import logica.dominio.Puesto;
 
 /**
@@ -43,5 +44,19 @@ public class Fachada {
      public void agregarPuesto(String pass,String nombreCompleto){
         sPeaje.agregarPuesto(pass, nombreCompleto);
     }
+     
+    //AGREGAR RECARGA
+     public void agregarRecarga(int monto, Propietario propietario){
+         sPeaje.agregarRecarga(monto, propietario);
+     }
+     
+     //AGREGAR BONIFICACION
+     public void agregarTipoBonificacion(String nombre){
+        sPeaje.agregarTipoBonificacion(nombre);
+     }
     
+     //AGREGAR CATEGORIA
+     public void agregarCategoria(String nombre) {
+         sPeaje.agregarCategoria(nombre);
+     }
 }
