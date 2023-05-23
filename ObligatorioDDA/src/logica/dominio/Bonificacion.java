@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Nicolas
  */
-public class Bonificacion {
+public abstract class Bonificacion {
     //ATRIBUTOS
     private String nombre;
     private ArrayList<Asignacion> asignaciones = new ArrayList();
@@ -34,4 +34,5 @@ public class Bonificacion {
         return puestos;
     }
    
+    public abstract int calcular();
 }
