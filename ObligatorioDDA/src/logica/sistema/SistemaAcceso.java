@@ -18,6 +18,15 @@ public class SistemaAcceso {
     private ArrayList<Propietario> propietarios = new ArrayList();
     private ArrayList<Administrador> administradores = new ArrayList();
     
+    //GETTERS
+    public ArrayList<Propietario> getPropietarios() {
+        return propietarios;
+    }
+
+    public ArrayList<Administrador> getAdministradores() {
+        return administradores;
+    }
+    
     //FUNCIONES AGREGAR
     public void agregarPropietario(int cedula,String pass,String nombreCompleto){
         propietarios.add(new Propietario(cedula, pass, nombreCompleto));
@@ -48,5 +57,6 @@ public class SistemaAcceso {
             }
         }
         return null;
-    }
+    }   
+   
 }

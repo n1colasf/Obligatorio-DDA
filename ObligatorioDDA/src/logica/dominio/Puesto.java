@@ -41,4 +41,11 @@ public class Puesto {
         return bonificaciones;
     }
     
+    //CREAR TARIFA
+    public void crearTarifa(int monto, String nombre, Categoria categoria, Puesto puesto) {
+        Tarifa tarifa = new Tarifa(monto, nombre, categoria, puesto);
+        if (tarifa != null) {
+            tarifas.add(tarifa);
+        }   
+    }  
 }

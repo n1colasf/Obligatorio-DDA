@@ -4,6 +4,8 @@
  */
 package logica.sistema;
 
+import java.util.ArrayList;
+import logica.dominio.Categoria;
 import logica.dominio.Propietario;
 import logica.dominio.Puesto;
 
@@ -39,7 +41,17 @@ public class Fachada {
     public void agregarAdministrador(int cedula,String pass,String nombreCompleto){
         sAcceso.agregarAdministrador(cedula, pass, nombreCompleto);  
     } 
-    
+        
+    //LOGIN ADMINISTRADOR
+     public void loginAdministrador(int cedula, String pass) {
+         sAcceso.loginAdministrador(cedula, pass);
+     }
+     
+     //LOGIN PROPIETARIO
+     public void loginPropietario(int cedula,String pass){ 
+         sAcceso.loginPropietario(cedula, pass);
+     }
+     
     //AGREGAR PUESTO
      public void agregarPuesto(String pass,String nombreCompleto){
         sPeaje.agregarPuesto(pass, nombreCompleto);
@@ -59,4 +71,23 @@ public class Fachada {
      public void agregarCategoria(String nombre) {
          sPeaje.agregarCategoria(nombre);
      }
+     
+     //GET CATEGORIAS
+     public ArrayList<Categoria> getCategorias() {
+        return sPeaje.getCategorias();
+    }
+
+    //GET PUESTOS
+    public ArrayList<Puesto> getPuestos() {
+        return sPeaje.getPuestos();
+    }
+    
+    //GET PROPIETARIOS
+    public ArrayList<Propietario> getPropietarios() {
+        return sAcceso.getPropietarios();
+    }
+    
+    public ArrayList<TipoBonificacion> getTipoBonificaciones() {
+        return sPeaje.getTipoBonificaciones();
+    }
 }

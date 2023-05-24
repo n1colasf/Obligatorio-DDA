@@ -37,4 +37,22 @@ public class SistemaPeaje {
     public void agregarCategoria(String nombre) {
         categorias.add(new Categoria(nombre));
     }
+    
+    //GETTERS
+    public ArrayList<Puesto> getPuestos() {
+        return puestos;
+    }
+
+    public ArrayList<Recarga> getRecargas() {
+        return recargas;
+    }
+
+    public ArrayList<TipoBonificacion> getTipoBonificaciones() {
+        return tipoBonificaciones;
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+    
 }
