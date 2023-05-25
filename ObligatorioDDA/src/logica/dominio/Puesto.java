@@ -42,10 +42,10 @@ public class Puesto {
     }
     
     //CREAR TARIFA
-    public void crearTarifa(int monto, String nombre, Categoria categoria, Puesto puesto) {
-        Tarifa tarifa = new Tarifa(monto, nombre, categoria, puesto);
+    public void crearTarifa(int monto, String nombre, Categoria categoria) {
+        Tarifa tarifa = new Tarifa(monto, nombre, categoria, this);
         if (tarifa != null) {
             tarifas.add(tarifa);
         }   
-    }  
+    }   
 }
