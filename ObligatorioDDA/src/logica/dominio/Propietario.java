@@ -46,4 +46,11 @@ public class Propietario extends Usuario {
         this.saldo = saldo;
     }
     
+    //CREAR VEHICULO
+    public void crearVehiculo(String matricula, String modelo, String color, Categoria categoria) {
+          Vehiculo vehiculo = new Vehiculo(matricula, modelo, color, this, categoria);
+        if (vehiculo != null) {
+            vehiculos.add(vehiculo);
+        }    
+    }
 }

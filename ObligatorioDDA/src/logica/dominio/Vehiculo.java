@@ -47,5 +47,5 @@ public class Vehiculo {
     }
     public ArrayList<Transito> getTransitos() {
         return transitos;
-    } 
+    }   
 }
