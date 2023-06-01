@@ -5,6 +5,7 @@
 package logica.dominio;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public abstract class Bonificacion {
     //ATRIBUTOS
     private String nombre;
-    private ArrayList<Asignacion> asignaciones = new ArrayList();
+    private Asignacion asignacion;
     private ArrayList<Puesto> puestos = new ArrayList();
     
     //CONSTRUCTOR
@@ -26,13 +27,10 @@ public abstract class Bonificacion {
         return nombre;
     }
 
-    public ArrayList<Asignacion> getAsignaciones() {
-        return asignaciones;
-    }
-
+    public Asignacion getAsignacion() { return asignacion; }
     public ArrayList<Puesto> getPuestos() {
         return puestos;
     }
-   
-    public abstract int calcular();
+
+    public abstract double calcular(Date fecha, boolean frecuente);
 }

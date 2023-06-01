@@ -6,6 +6,8 @@ package logica.sistema;
 
 import logica.dominio.Bonificacion;
 
+import java.util.Date;
+
 /**
  *
  * @author Nicolas
@@ -17,8 +19,12 @@ public class Trabajadores extends Bonificacion {
     }
 
     @Override
-    public int calcular() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double calcular(Date fecha, boolean frecuente) {
+        //Trabajadores: Tienen un 80% de descuento si el tránsito por el puesto se realiza en un día de semana.
+        if (fecha.getDay() == 0 || fecha.getDay() == 6) {
+            return 1;
+        } else {
+            return 0.2;
+        }
     }
-    
 }

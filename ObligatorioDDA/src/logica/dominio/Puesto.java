@@ -5,6 +5,7 @@
 package logica.dominio;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Puesto {
     private String direccion;
     private ArrayList<Tarifa> tarifas = new ArrayList();
     private ArrayList<Transito> transitos = new ArrayList();
-    private ArrayList<Bonificacion> bonificaciones = new ArrayList();
+    private ArrayList<Asignacion> asignaciones = new ArrayList();
     
     //CONSTRUCTOR
     public Puesto(String nombre, String direccion) {
@@ -37,8 +38,7 @@ public class Puesto {
     public ArrayList<Transito> getTransitos() {
         return transitos;
     }
-    public ArrayList<Bonificacion> getBonificaciones() {
-        return bonificaciones;
+    public ArrayList<Asignacion> getAsignaciones() {
+        return asignaciones;
     }
-    
 }

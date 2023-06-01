@@ -5,6 +5,10 @@
 package logica.sistema;
 
 import logica.dominio.Bonificacion;
+import logica.dominio.Vehiculo;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,8 +21,14 @@ public class Frecuentes extends Bonificacion {
     }
 
     @Override
-    public int calcular() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double calcular(Date fecha, boolean frecuente) {
+        //Frecuentes: Tienen un 50% de descuento a partir del segundo transito realizado en el día
+        // por un puesto determinado con el mismo vehículo. En el primer transito del día (con cada vehículo)
+        // no tienen descuento.
+        if (frecuente) {
+            return 0.5;
+        } else {
+            return 1;
+        }
     }
-    
 }

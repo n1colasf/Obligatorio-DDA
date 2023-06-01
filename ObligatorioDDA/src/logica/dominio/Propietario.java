@@ -17,7 +17,7 @@ public class Propietario extends Usuario {
     private ArrayList<Vehiculo> vehiculos = new ArrayList();
     private ArrayList<Notificacion> notificaciones = new ArrayList();
     private ArrayList<Recarga> recargas = new ArrayList();
-    private ArrayList<Asignacion> asignaciones = new ArrayList();   
+    private ArrayList<Asignacion> asignaciones = new ArrayList();
     
     //CONSTRUCTOR
     public Propietario(int cedula, String password, String nombreCompleto) {
@@ -45,5 +45,14 @@ public class Propietario extends Usuario {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    
+
+    public Asignacion getAsignacion(Puesto puesto) {
+        Asignacion asignacion = null;
+        for (Asignacion a : asignaciones) {
+            if (a.getPuesto().equals(puesto)) {
+                asignacion = a;
+            }
+        }
+        return asignacion;
+    }
 }

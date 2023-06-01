@@ -5,6 +5,7 @@
 package logica.dominio;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -47,5 +48,19 @@ public class Vehiculo {
     }
     public ArrayList<Transito> getTransitos() {
         return transitos;
-    } 
+    }
+
+    public boolean frecuenciaVehiculo (Puesto puesto, Date fecha) {
+        int frecuencia = 0;
+        for (Transito transito : transitos) {
+            if (transito.getPuesto().equals(puesto) && transito.getFecha() == fecha) {
+                frecuencia++;
+            }
+        }
+        return frecuencia > 1;
+    }
+
+    public Asignacion obtenerAsignacion(Puesto puesto) {
+       return getPropietario().getAsignacion(puesto);
+    }
 }

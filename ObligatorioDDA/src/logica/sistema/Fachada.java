@@ -21,5 +21,4 @@ public class Fachada {
 
     private Fachada() {
     }
-    
 }

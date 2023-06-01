@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package logica.sistema;
-
 import logica.dominio.Bonificacion;
+import java.util.Date;
 
 /**
  *
@@ -17,8 +17,9 @@ public class Exonerados extends Bonificacion {
     }
 
     @Override
-    public int calcular() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double calcular(Date fecha, boolean frecuente) {
+        //los exonerados no pagan la tarifa del peaje
+        return 0;
     }
     
     
