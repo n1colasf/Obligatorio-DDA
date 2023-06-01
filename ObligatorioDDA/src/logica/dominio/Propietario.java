@@ -45,4 +45,12 @@ public class Propietario extends Usuario {
     }
     return asignacion;
   }
+  
+    //CREAR VEHICULO
+    public void crearVehiculo(String matricula, String modelo, String color, Categoria categoria) {
+          Vehiculo vehiculo = new Vehiculo(matricula, modelo, color, this, categoria);
+        if (vehiculo != null) {
+            vehiculos.add(vehiculo);
+        }    
+    }
 }

@@ -24,7 +24,6 @@ public abstract class Bonificacion {
 
   // GETTERS
   public String getNombre() { return nombre; }
-
   public Asignacion getAsignacion() { return asignacion; }
   public ArrayList<Puesto> getPuestos() { return puestos; }
 

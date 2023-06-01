@@ -33,4 +33,12 @@ public class Puesto {
   public ArrayList<Tarifa> getTarifas() { return tarifas; }
   public ArrayList<Transito> getTransitos() { return transitos; }
   public ArrayList<Asignacion> getAsignaciones() { return asignaciones; }
+    
+    //CREAR TARIFA
+    public void crearTarifa(int monto, String nombre, Categoria categoria) {
+        Tarifa tarifa = new Tarifa(monto, nombre, categoria, this);
+        if (tarifa != null) {
+            tarifas.add(tarifa);
+        }   
+    }   
 }

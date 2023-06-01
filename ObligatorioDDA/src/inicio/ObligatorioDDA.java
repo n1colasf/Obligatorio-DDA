@@ -17,9 +17,11 @@ public class ObligatorioDDA {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        PrecargaDatos.cargar();
+        
         new TestingApp(null, false).setVisible(true);
-        //
-        //
+   
     }
     
 }
