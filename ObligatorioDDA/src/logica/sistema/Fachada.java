@@ -1,6 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
+ * template
  */
 package logica.sistema;
 
@@ -9,16 +11,13 @@ package logica.sistema;
  * @author Nicolas
  */
 public class Fachada {
-    
-    //inicializar los controles...
-    
-    //instancia estatica de fachada
-    private static Fachada instancia = new Fachada();
 
-    public static Fachada getInstancia() {
-        return instancia;
-    }
+  // inicializar los controles...
 
-    private Fachada() {
-    }
+  // instancia estatica de fachada
+  private static Fachada instancia = new Fachada();
+
+  public static Fachada getInstancia() { return instancia; }
+
+  private Fachada() {}
 }
