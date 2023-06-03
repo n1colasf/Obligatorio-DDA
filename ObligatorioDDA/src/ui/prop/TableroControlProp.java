@@ -4,21 +4,29 @@
  */
 package ui.prop;
 
+import logica.dominio.Propietario;
+import logica.observador.Observable;
+import logica.observador.Observador;
+
 /**
  *
  * @author Nicolas
  */
-public class TableroControlProp extends javax.swing.JDialog {
+public class TableroControlProp extends javax.swing.JDialog implements Observador {
+    
+    private Propietario propietario;
 
     /**
      * Creates new form TableroControlProp
      * @param parent
      * @param modal
      */
-    public TableroControlProp(java.awt.Frame parent, boolean modal) {
+    public TableroControlProp(java.awt.Frame parent, boolean modal, Propietario p) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
+        propietario = p;
+        p.agregarObservador(this);
 
     }
 
@@ -361,54 +369,13 @@ public class TableroControlProp extends javax.swing.JDialog {
 
     private void RecargarPropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecargarPropBtnActionPerformed
         // TODO add your handling code here:
-        new RecargaProp(null, true).setVisible(true);
+        new RecargaProp(null, true, propietario).setVisible(true);
     }//GEN-LAST:event_RecargarPropBtnActionPerformed
 
     private void CerrarSesionPropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionPropBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CerrarSesionPropBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TableroControlProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TableroControlProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TableroControlProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TableroControlProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                TableroControlProp dialog = new TableroControlProp(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BorrarNotPropBtn;
@@ -446,4 +413,13 @@ public class TableroControlProp extends javax.swing.JDialog {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     // End of variables declaration//GEN-END:variables
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    @Override
+    public void actualizar(Object evento, Observable origen) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -4,22 +4,27 @@
  */
 package ui.prop;
 
-import logica.observador.Observable;
-import logica.observador.Observador;
+import controladores.ControladorSolicitarRecargas;
+import controladores.VistaSolicitarRecargas;
+import logica.dominio.Propietario;
 
 /**
  *
  * @author Nicolas
  */
-public class RecargaProp extends javax.swing.JDialog implements Observador {
+public class RecargaProp extends javax.swing.JDialog implements VistaSolicitarRecargas {
+    
+    private ControladorSolicitarRecargas controlador;
 
     /**
      * Creates new form RecargaProp
      */
-    public RecargaProp(java.awt.Frame parent, boolean modal) {
+    public RecargaProp(java.awt.Frame parent, boolean modal, Propietario p) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.controlador = new ControladorSolicitarRecargas(this, p);
+        mostrar(p);
     }
 
     /**
@@ -31,40 +36,40 @@ public class RecargaProp extends javax.swing.JDialog implements Observador {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel13 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        LoginAdmPass = new javax.swing.JTextField();
-        LoginAdmBtn = new javax.swing.JButton();
+        JSaldo = new javax.swing.JLabel();
+        JimgMonto = new javax.swing.JLabel();
+        JNombre = new javax.swing.JLabel();
+        JImgProp = new javax.swing.JLabel();
+        JLabelMonto = new javax.swing.JLabel();
+        JImputMonto = new javax.swing.JTextField();
+        JRecargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("RECARGAR");
 
-        jLabel13.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel13.setText("$ 1.877,50");
+        JSaldo.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        JSaldo.setText("$ 1.877,50");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/money.png"))); // NOI18N
+        JimgMonto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/money.png"))); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Darío Campalans");
+        JNombre.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
+        JNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JNombre.setText("Darío Campalans");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
+        JImgProp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
 
-        jLabel3.setText("Monto a recargar: ");
+        JLabelMonto.setText("Monto a recargar: ");
 
-        LoginAdmPass.addActionListener(new java.awt.event.ActionListener() {
+        JImputMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginAdmPassActionPerformed(evt);
+                JImputMontoActionPerformed(evt);
             }
         });
 
-        LoginAdmBtn.setText("Recargar");
-        LoginAdmBtn.addActionListener(new java.awt.event.ActionListener() {
+        JRecargar.setText("Recargar");
+        JRecargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginAdmBtnActionPerformed(evt);
+                JRecargarActionPerformed(evt);
             }
         });
 
@@ -74,23 +79,23 @@ public class RecargaProp extends javax.swing.JDialog implements Observador {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2)
+                .addComponent(JimgMonto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addComponent(JSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(JImgProp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(JLabelMonto)
                                 .addGap(32, 32, 32)
-                                .addComponent(LoginAdmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(LoginAdmBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(JImputMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JRecargar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(17, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -98,85 +103,57 @@ public class RecargaProp extends javax.swing.JDialog implements Observador {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
+                    .addComponent(JimgMonto)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel12)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel13)))
+                        .addComponent(JNombre)
+                        .addComponent(JImgProp)
+                        .addComponent(JSaldo)))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(LoginAdmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(JLabelMonto)
+                    .addComponent(JImputMonto, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(LoginAdmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginAdmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmPassActionPerformed
+    private void JImputMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JImputMontoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LoginAdmPassActionPerformed
+    }//GEN-LAST:event_JImputMontoActionPerformed
 
-    private void LoginAdmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtnActionPerformed
+    private void JRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRecargarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LoginAdmBtnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecargaProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecargaProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecargaProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecargaProp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                RecargaProp dialog = new RecargaProp(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+        int monto = Integer.parseInt(JImputMonto.getText());
+        
+    }//GEN-LAST:event_JRecargarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginAdmBtn;
-    private javax.swing.JTextField LoginAdmPass;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel JImgProp;
+    private javax.swing.JTextField JImputMonto;
+    private javax.swing.JLabel JLabelMonto;
+    private javax.swing.JLabel JNombre;
+    private javax.swing.JButton JRecargar;
+    private javax.swing.JLabel JSaldo;
+    private javax.swing.JLabel JimgMonto;
+    // End of variables declaration//GEN-END:variables
+
 
     @Override
-    public void actualizar(Object evento, Observable origen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void solicitarRecarga(int monto) {
+        controlador.solicitarRecarga(monto);   
     }
-    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrar(Propietario p) {
+if(p!=null){
+            JNombre.setText(p.getNombreCompleto());
+            JSaldo.setText(String.valueOf(p.getSaldo()));
+            
+        }else{
+            JNombre.setText("");
+            JSaldo.setText("");
+        }    }
 }

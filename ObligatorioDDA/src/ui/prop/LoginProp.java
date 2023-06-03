@@ -4,11 +4,15 @@
  */
 package ui.prop;
 
+import logica.dominio.Propietario;
+
 /**
  *
  * @author Nicolas
  */
 public class LoginProp extends javax.swing.JDialog {
+    
+    private Propietario propietario;
 
     /**
      * Creates new form LoginPropietario
@@ -108,7 +112,7 @@ public class LoginProp extends javax.swing.JDialog {
 
     private void LoginPropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginPropBtnActionPerformed
         // TODO add your handling code here:
-        new TableroControlProp(null, false).setVisible(true);
+        new TableroControlProp(null, false, propietario).setVisible(true);
     }//GEN-LAST:event_LoginPropBtnActionPerformed
 
     /**

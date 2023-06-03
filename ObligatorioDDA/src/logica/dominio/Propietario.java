@@ -54,4 +54,8 @@ public class Propietario extends Usuario {
       vehiculos.add(vehiculo);
     }
   }
+
+    public void agregarRecarga(Recarga r) {
+        recargas.add(r);
+    }
 }
