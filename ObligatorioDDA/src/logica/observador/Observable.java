@@ -20,6 +20,7 @@ public class Observable {
     if (!observadores.contains(obs)) {
       observadores.add(obs);
     }
+  }
     
   public void quitarObservador(Observador obs) { observadores.remove(obs); }
 
