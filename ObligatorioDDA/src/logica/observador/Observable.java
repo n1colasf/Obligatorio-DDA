@@ -23,7 +23,6 @@ public class Observable {
         observadores.remove(obs);
     }
     public void avisar(Object evento){
-       
         ArrayList<Observador> copia = new ArrayList(observadores);
         for(Observador obs:copia){
             obs.actualizar(evento, this);

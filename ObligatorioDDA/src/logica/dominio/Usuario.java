@@ -4,11 +4,14 @@
  */
 package logica.dominio;
 
+import controladores.ControladorSolicitarRecargas;
+import logica.observador.Observable;
+
 /**
  *
  * @author Nicolas
  */
-public abstract class Usuario {
+public abstract class Usuario extends Observable {
     //ATRIBUTOS
     private int cedula;
     private String password;
@@ -30,5 +33,5 @@ public abstract class Usuario {
     }
     public String getNombreCompleto() {
         return nombreCompleto;
-    }   
+    }
 }

@@ -4,11 +4,14 @@
  */
 package ui.prop;
 
+import logica.observador.Observable;
+import logica.observador.Observador;
+
 /**
  *
  * @author Nicolas
  */
-public class RecargaProp extends javax.swing.JDialog {
+public class RecargaProp extends javax.swing.JDialog implements Observador {
 
     /**
      * Creates new form RecargaProp
@@ -167,8 +170,13 @@ public class RecargaProp extends javax.swing.JDialog {
     private javax.swing.JTextField LoginAdmPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel13
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+
+    @Override
+    public void actualizar(Object evento, Observable origen) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     // End of variables declaration//GEN-END:variables
 }
