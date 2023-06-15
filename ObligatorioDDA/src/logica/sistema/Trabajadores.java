@@ -5,17 +5,15 @@ import logica.dominio.Bonificacion;
 
 public class Trabajadores extends Bonificacion {
 
-    public Trabajadores(String nombre) {
-        super(nombre);
-    }
+  public Trabajadores(String nombre) { super(nombre); }
 
-    @Override
-    public double calcular(LocalDate fecha, boolean frecuente) {
-        if (fecha.getDayOfWeek().getValue() == 6 || fecha.getDayOfWeek().getValue() == 7) {
-            return 1;
-        } else {
-            return 0.2;
-        }
+  @Override
+  public double calcular(LocalDate fecha, boolean frecuente) {
+    if (fecha.getDayOfWeek().getValue() == 6 ||
+        fecha.getDayOfWeek().getValue() == 7) {
+      return 1;
+    } else {
+      return 0.2;
     }
-
+  }
 }

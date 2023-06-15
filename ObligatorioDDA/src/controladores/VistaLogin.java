@@ -5,10 +5,9 @@ import logica.dominio.Propietario;
 
 public interface VistaLogin {
 
-    public void loginPropValidado(Propietario p);
+  public void loginPropValidado(Propietario p);
 
-    public void loginAdminValidado(Administrador a);
+  public void loginAdminValidado(Administrador a);
 
-    public void error(String message);
-
+  public void error(String message);
 }

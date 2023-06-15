@@ -12,47 +12,46 @@ import logica.sistema.Fachada;
 
 public class ControladorAsignarRecargas implements Observador {
 
-    private VistaAsignarRecargas vista;
-    private Administrador admin;
+  private VistaAsignarRecargas vista;
+  private Administrador admin;
 
-    public ControladorAsignarRecargas(VistaAsignarRecargas vista, Administrador admin) {
-        this.vista = vista;
-        this.admin = admin;
-        admin.agregarObservador(this);
-        mostrarRecargas();
+  public ControladorAsignarRecargas(VistaAsignarRecargas vista,
+                                    Administrador admin) {
+    this.vista = vista;
+    this.admin = admin;
+    admin.agregarObservador(this);
+    mostrarRecargas();
+  }
+
+  public void mostrarRecargas() {
+
+    ArrayList<Recarga> aux = new ArrayList<>();
+
+    ArrayList<Propietario> propietarios =
+        Fachada.getInstancia().getPropietarios();
+
+    for (Propietario p : propietarios) {
+
+      aux.addAll(p.getRecargasSinAprobar());
     }
+    vista.mostrarRecargas(aux);
+  }
 
-    public void mostrarRecargas() {
+  public void aprobarRecarga(Recarga r) {
+    r.setAdministrador(admin);
+    r.getPropietario().actualizarSaldoRecarga(r);
+    r.getPropietario().agregarNotificacion(
+        new Notificacion("Tu recarga de $" + r.getMonto() + " fue aprobada.",
+                         LocalDate.now(), r.getPropietario()));
+    admin.avisar(Administrador.eventos.cambioListaRecargas);
+  }
 
-        ArrayList<Recarga> aux = new ArrayList<>();
-
-        ArrayList<Propietario> propietarios = Fachada.getInstancia().getPropietarios();
-
-        for (Propietario p : propietarios) {
-
-            aux.addAll(p.getRecargasSinAprobar());
-
-        }
-        vista.mostrarRecargas(aux);
+  @Override
+  public void actualizar(Object evento, Observable origen) {
+    if (evento.equals(Administrador.eventos.cambioListaRecargas)) {
+      mostrarRecargas();
     }
+  }
 
-    public void aprobarRecarga(Recarga r) {
-        r.setAdministrador(admin);
-        r.getPropietario().actualizarSaldoRecarga(r);
-        r.getPropietario().agregarNotificacion(new Notificacion("Tu recarga de $" + r.getMonto() + " fue aprobada.", LocalDate.now(), r.getPropietario()));
-        admin.avisar(Administrador.eventos.cambioListaRecargas);
-    }
-
-    @Override
-    public void actualizar(Object evento, Observable origen) {
-        if (evento.equals(Administrador.eventos.cambioListaRecargas)) {
-            mostrarRecargas();
-        }
-
-    }
-
-    public void salir() {
-        admin.quitarObservador(this);
-    }
-
+  public void salir() { admin.quitarObservador(this); }
 }

@@ -6,10 +6,9 @@ import logica.dominio.Tarifa;
 
 public interface VistaTransito {
 
-    public void cargarPuestos(ArrayList<Puesto> puestos);
+  public void cargarPuestos(ArrayList<Puesto> puestos);
 
-    public void cargarTarifas(ArrayList<Tarifa> tarifas);
+  public void cargarTarifas(ArrayList<Tarifa> tarifas);
 
-    public void error(String message);
-
+  public void error(String message);
 }

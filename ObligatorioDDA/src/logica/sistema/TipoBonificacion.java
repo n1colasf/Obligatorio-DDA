@@ -2,19 +2,14 @@ package logica.sistema;
 
 public class TipoBonificacion {
 
-    private String nombre;
+  private String nombre;
 
-    public TipoBonificacion(String nombre) {
-        this.nombre = nombre;
-    }
+  public TipoBonificacion(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
+  public String getNombre() { return nombre; }
 
-    @Override
-    public String toString() {
-        return nombre;
-    }
-
+  @Override
+  public String toString() {
+    return nombre;
+  }
 }
