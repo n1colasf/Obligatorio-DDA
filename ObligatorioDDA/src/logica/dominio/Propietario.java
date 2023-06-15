@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
- * template
- */
 package logica.dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-
-/**
- *
- * @author Nicolas
- */
+import logica.sistema.Fachada;
+import logica.sistema.PeajeException;
 
 public class Propietario extends Usuario {
   // ATRIBUTOS
+
   private int saldo = 0;
   private ArrayList<Vehiculo> vehiculos = new ArrayList();
   private ArrayList<Notificacion> notificaciones = new ArrayList();
@@ -28,9 +21,13 @@ public class Propietario extends Usuario {
 
   // GETTERS
   public int getSaldo() { return saldo; }
+
   public ArrayList<Vehiculo> getVehiculos() { return vehiculos; }
+
   public ArrayList<Notificacion> getNotificaciones() { return notificaciones; }
+
   public ArrayList<Recarga> getRecargas() { return recargas; }
+
   public ArrayList<Asignacion> getAsignaciones() { return asignaciones; }
 
   // SETTERS
@@ -52,6 +49,95 @@ public class Propietario extends Usuario {
     Vehiculo vehiculo = new Vehiculo(matricula, modelo, color, this, categoria);
     if (vehiculo != null) {
       vehiculos.add(vehiculo);
+      avisar(eventos.cambioListaVehiculo);
     }
+  }
+
+  public void agregarAsignacion(Asignacion a) {
+    asignaciones.add(0, a);
+    avisar(eventos.cambiosListaBonificaciones);
+    a.getAdministrador().avisar(
+        Administrador.eventos.cambiosListaBonificaciones);
+  }
+
+  public void hayAsignacionEnPuesto(Puesto puesto) throws PeajeException {
+    Asignacion a = getAsignacion(puesto);
+    if (a != null) {
+      throw new PeajeException(
+          "Ya tiene una bonificación asignada para ese puesto");
+    }
+  }
+
+  public void borrarNotificaciones() {
+
+    this.notificaciones = new ArrayList<>();
+    avisar(eventos.cambioListaNotificaciones);
+  }
+
+  public ArrayList<Recarga> getRecargasSinAprobar() {
+
+    ArrayList<Recarga> aux = new ArrayList<>();
+
+    for (Recarga r : this.getRecargas()) {
+
+      if (r.getAdministrador() == null) {
+        aux.add(r);
+      }
+    }
+    return aux;
+  }
+
+  public Vehiculo getVehiculoMatricula(String matricula) {
+
+    for (Vehiculo v : vehiculos) {
+
+      if (v.getMatricula().equals(matricula)) {
+        return v;
+      }
+    }
+    return null;
+  }
+
+  public void agregarRecarga(Recarga r) throws PeajeException {
+    if (r.getMonto() >= 1) {
+      recargas.add(0, r);
+      avisar(eventos.cambioListaRecargas);
+      Fachada.getInstancia().avisarAdminsConectados(
+          Administrador.eventos.cambioListaRecargas);
+    } else {
+      throw new PeajeException("Monto inválido");
+    }
+  }
+
+  public void agregarNotificacion(Notificacion n) {
+    notificaciones.add(0, n);
+    avisar(eventos.cambioListaNotificaciones);
+  }
+
+  public Vehiculo obtenerVehiculoMatricula(String matricula) {
+    for (Vehiculo v : vehiculos) {
+      if (v.getMatricula().equals(matricula)) {
+        return v;
+      }
+    }
+    return null;
+  }
+
+  public ArrayList<Transito> obtenerTransitos() {
+    ArrayList<Transito> transitos = new ArrayList<>();
+    for (Vehiculo v : vehiculos) {
+      transitos.addAll(v.getTransitos());
+    }
+    return transitos;
+  }
+
+  public void actualizarSaldoRecarga(Recarga r) {
+    saldo = saldo + r.getMonto();
+    avisar(eventos.cambioListaRecargas);
+  }
+
+  public void actualizarSaldoTransito(Transito t) {
+    this.saldo = (int)(saldo - t.getTotal());
+    avisar(eventos.cambioListaTransitos);
   }
 }

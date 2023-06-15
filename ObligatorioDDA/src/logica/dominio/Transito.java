@@ -1,37 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
- * template
- */
+
 package logica.dominio;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author Nicolas
- */
 public class Transito {
   // ATRIBUTOS
-  private Date fecha = new Date();
+  private LocalDate fecha;
   private double monto;
+  private double descuento;
+  private double total;
   private Vehiculo vehiculo;
   private Puesto puesto;
   private Asignacion asignacion;
 
   // CONSTRUCTOR
-  public Transito(Date fecha, double monto, Vehiculo vehiculo, Puesto puesto) {
-    this.asignacion = vehiculo.obtenerAsignacion(puesto);
-    this.fecha = fecha;
-    this.monto = CalcularMonto(monto, fecha, vehiculo, puesto);
+  public Transito(Vehiculo vehiculo, Puesto puesto) {
+    this.fecha = LocalDate.now();
     this.vehiculo = vehiculo;
     this.puesto = puesto;
+    this.asignacion = vehiculo.obtenerAsignacion(this.puesto);
+    this.monto = vehiculo.getMontoTarifa(this.puesto);
+    this.total = CalcularMonto(this.monto, this.fecha, this.puesto);
+    this.descuento = this.total - this.monto;
   }
 
   // GETTERS
-  public Date getFecha() { return fecha; }
+  public LocalDate getFecha() { return fecha; }
   public double getMonto() { return monto; }
+  public double getDescuento() { return descuento; }
+  public double getTotal() { return total; }
   public Vehiculo getVehiculo() { return vehiculo; }
   public Puesto getPuesto() { return puesto; }
   public Asignacion getAsignacion() { return asignacion; }
@@ -41,13 +38,12 @@ public class Transito {
     this.asignacion = asignacion;
   }
 
-  private double CalcularMonto(double monto, Date fecha, Vehiculo vehiculo,
-                               Puesto puesto) {
+  private double CalcularMonto(double monto, LocalDate fecha, Puesto puesto) {
     double montoFinal = monto;
     double descuento = 1;
     if (asignacion != null) {
       descuento = asignacion.getBonificacion().calcular(
-          fecha, vehiculo.frecuenciaVehiculo(puesto, fecha));
+          fecha, this.vehiculo.frecuenciaVehiculo(puesto, fecha));
       montoFinal = monto * descuento;
     }
     return montoFinal;
