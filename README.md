@@ -28,12 +28,30 @@ El objetivo del presente trabajo obligatorio es modelar e implementar la primera
 
 ## Solución propuesta:
 ### Diagrama de Dominio:
-<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/05/18/f9b8a4ae83874e52a267ce26d5935d91.png" />
+<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/06/15/c940aa5bd0fca35a58021f0b32888654.png" />
 
 ### Diagrama de Diseño:
+<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/06/15/95807b465fb79bc3d720e5cf92cd45dc.png" />
 
 
+### Puntos contemplados en la solución:
+- Diagrama conceptual de domino. 
+- Diagrama de diseño
+- División lógica
+- Experto
+- Fachada y arquitectura
+- MVC
+- Observador y manejo de eventos
+- Manejo de excepciones
+- Herencia y polimorfismo
 
 
+## Funcionalidad de la aplicación:
+### Aplicacion principal:
+<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/06/15/f022debc03f02a5fe7e8f1fe71a74322.png" />
 
+### Propietario:
+<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/06/15/e0f4e0beb53a788283163e575ba76c2a.png" />
 
+### Administrador:
+<img width="100%" alt="Diagrama de Dominio" src="https://bg-so-1.zippyimage.com/2023/06/15/8b9e3ad9b8d33594117af0a40c2b0cb3.png" />
