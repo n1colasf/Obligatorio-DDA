@@ -4,28 +4,23 @@ import java.time.LocalDate;
 
 public class Notificacion {
 
-    //ATRIBUTOS
-    private String mensaje;
-    private LocalDate fecha;
-    private Propietario propietario;
+  // ATRIBUTOS
+  private String mensaje;
+  private LocalDate fecha;
+  private Propietario propietario;
 
-    //CONSTRUCTOR
-    public Notificacion(String mensaje, LocalDate fecha, Propietario propietario) {
-        this.mensaje = mensaje;
-        this.fecha = fecha;
-        this.propietario = propietario;
-    }
+  // CONSTRUCTOR
+  public Notificacion(String mensaje, LocalDate fecha,
+                      Propietario propietario) {
+    this.mensaje = mensaje;
+    this.fecha = fecha;
+    this.propietario = propietario;
+  }
 
-    //GETTERS
-    public String getMensaje() {
-        return mensaje;
-    }
+  // GETTERS
+  public String getMensaje() { return mensaje; }
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
+  public LocalDate getFecha() { return fecha; }
 
-    public Propietario getPropietario() {
-        return propietario;
-    }
+  public Propietario getPropietario() { return propietario; }
 }

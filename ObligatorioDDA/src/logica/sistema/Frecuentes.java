@@ -1,11 +1,10 @@
 
 package logica.sistema;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import logica.dominio.Bonificacion;
 import logica.dominio.Vehiculo;
-
 
 public class Frecuentes extends Bonificacion {
 
@@ -21,6 +20,4 @@ public class Frecuentes extends Bonificacion {
       return 1;
     }
   }
-  
-  
 }

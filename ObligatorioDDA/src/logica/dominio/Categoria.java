@@ -4,26 +4,18 @@ import java.util.ArrayList;
 
 public class Categoria {
 
-    //ATRIBUTOS
-    private String nombre;
-    private ArrayList<Tarifa> tarifas = new ArrayList();
-    private ArrayList<Vehiculo> vehiculos;
+  // ATRIBUTOS
+  private String nombre;
+  private ArrayList<Tarifa> tarifas = new ArrayList();
+  private ArrayList<Vehiculo> vehiculos;
 
-    //CONSTRUCTOR
-    public Categoria(String nombre) {
-        this.nombre = nombre;
-    }
+  // CONSTRUCTOR
+  public Categoria(String nombre) { this.nombre = nombre; }
 
-    //GETTERS
-    public String getNombre() {
-        return nombre;
-    }
+  // GETTERS
+  public String getNombre() { return nombre; }
 
-    public ArrayList<Tarifa> getTarifas() {
-        return tarifas;
-    }
+  public ArrayList<Tarifa> getTarifas() { return tarifas; }
 
-    public ArrayList<Vehiculo> getVehiculos() {
-        return vehiculos;
-    }
+  public ArrayList<Vehiculo> getVehiculos() { return vehiculos; }
 }

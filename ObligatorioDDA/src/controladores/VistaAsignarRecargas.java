@@ -5,5 +5,5 @@ import logica.dominio.Recarga;
 
 public interface VistaAsignarRecargas {
 
-    public void mostrarRecargas(ArrayList<Recarga> lista);
+  public void mostrarRecargas(ArrayList<Recarga> lista);
 }

@@ -10,18 +10,19 @@ import logica.dominio.Vehiculo;
 
 public interface VistaTableroControl {
 
-    public void mostrarTransito(ArrayList<Transito> transitos);
+  public void mostrarTransito(ArrayList<Transito> transitos);
 
-    public void mostrarVehiculo(ArrayList<Vehiculo> vehiculos);
+  public void mostrarVehiculo(ArrayList<Vehiculo> vehiculos);
 
-    public void mostrarNotificaciones(ArrayList<Notificacion> notificaciones);
+  public void mostrarNotificaciones(ArrayList<Notificacion> notificaciones);
 
-    public void mostrarBonificaciones(ArrayList<Asignacion> bonificaciones);
+  public void mostrarBonificaciones(ArrayList<Asignacion> bonificaciones);
 
-    public void mostrarRecargas(ArrayList<Recarga> recargas);
+  public void mostrarRecargas(ArrayList<Recarga> recargas);
 
-    public void mostrarDatosProp(Propietario propietario);
+  public void mostrarDatosProp(Propietario propietario);
 
-    public void mostrarCantidadDatos(int cantVehiculos, int cantNotificaciones, int cantAsignaciones, int cannTransitos, int cantRecargas);
-
+  public void mostrarCantidadDatos(int cantVehiculos, int cantNotificaciones,
+                                   int cantAsignaciones, int cannTransitos,
+                                   int cantRecargas);
 }

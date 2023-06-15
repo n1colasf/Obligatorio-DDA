@@ -1,53 +1,42 @@
 package logica.dominio;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Asignacion {
-    // ATRIBUTOS
+  // ATRIBUTOS
 
-    private LocalDate fecha;
-    private Bonificacion bonificacion;
-    private Puesto puesto;
-    private ArrayList<Transito> transitos = new ArrayList();
-    private Propietario propietario;
-    private Administrador administrador;
+  private LocalDate fecha;
+  private Bonificacion bonificacion;
+  private Puesto puesto;
+  private ArrayList<Transito> transitos = new ArrayList();
+  private Propietario propietario;
+  private Administrador administrador;
 
-    // CONSTRUCTOR
-    public Asignacion(Bonificacion bonificacion, Propietario propietario, Puesto puesto, Administrador administrador) {
-        this.fecha = LocalDate.now();
-        this.bonificacion = bonificacion;
-        this.propietario = propietario;
-        this.puesto = puesto;
-        this.administrador = administrador;
-    }
+  // CONSTRUCTOR
+  public Asignacion(Bonificacion bonificacion, Propietario propietario,
+                    Puesto puesto, Administrador administrador) {
+    this.fecha = LocalDate.now();
+    this.bonificacion = bonificacion;
+    this.propietario = propietario;
+    this.puesto = puesto;
+    this.administrador = administrador;
+  }
 
-    // GETTERS
-    public LocalDate getFecha() {
-        return fecha;
-    }
+  // GETTERS
+  public LocalDate getFecha() { return fecha; }
 
-    public Bonificacion getBonificacion() {
-        return bonificacion;
-    }
+  public Bonificacion getBonificacion() { return bonificacion; }
 
-    public Propietario getPropietario() {
-        return propietario;
-    }
+  public Propietario getPropietario() { return propietario; }
 
-    public Administrador getAdministrador() {
-        return administrador;
-    }
+  public Administrador getAdministrador() { return administrador; }
 
-    public Puesto getPuesto() {
-        return puesto;
-    }
+  public Puesto getPuesto() { return puesto; }
 
-    public ArrayList<Transito> getTransitos() {
-        return transitos;
-    }
+  public ArrayList<Transito> getTransitos() { return transitos; }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
-    }
+  public void setAdministrador(Administrador administrador) {
+    this.administrador = administrador;
+  }
 }

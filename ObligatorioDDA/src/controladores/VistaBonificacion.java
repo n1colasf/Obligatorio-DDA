@@ -8,12 +8,11 @@ import logica.sistema.TipoBonificacion;
 
 public interface VistaBonificacion {
 
-    public void mostrarBonificaciones(ArrayList<TipoBonificacion> tipos);
+  public void mostrarBonificaciones(ArrayList<TipoBonificacion> tipos);
 
-    public void mostrarPuestos(ArrayList<Puesto> puestos);
+  public void mostrarPuestos(ArrayList<Puesto> puestos);
 
-    public void mostrarInfoProp(Propietario p, ArrayList<Asignacion> a);
+  public void mostrarInfoProp(Propietario p, ArrayList<Asignacion> a);
 
-    public void error(String message);
-
+  public void error(String message);
 }

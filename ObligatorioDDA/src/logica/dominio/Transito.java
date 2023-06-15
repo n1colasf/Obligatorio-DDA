@@ -3,7 +3,6 @@ package logica.dominio;
 
 import java.time.LocalDate;
 
-
 public class Transito {
   // ATRIBUTOS
   private LocalDate fecha;
@@ -15,8 +14,8 @@ public class Transito {
   private Asignacion asignacion;
 
   // CONSTRUCTOR
-  public Transito( Vehiculo vehiculo, Puesto puesto) {
-    this.fecha=LocalDate.now();
+  public Transito(Vehiculo vehiculo, Puesto puesto) {
+    this.fecha = LocalDate.now();
     this.vehiculo = vehiculo;
     this.puesto = puesto;
     this.asignacion = vehiculo.obtenerAsignacion(this.puesto);
@@ -39,12 +38,12 @@ public class Transito {
     this.asignacion = asignacion;
   }
 
-  private double CalcularMonto(double monto, LocalDate fecha,
-                               Puesto puesto) {
+  private double CalcularMonto(double monto, LocalDate fecha, Puesto puesto) {
     double montoFinal = monto;
     double descuento = 1;
     if (asignacion != null) {
-      descuento = asignacion.getBonificacion().calcular(fecha, this.vehiculo.frecuenciaVehiculo(puesto, fecha));
+      descuento = asignacion.getBonificacion().calcular(
+          fecha, this.vehiculo.frecuenciaVehiculo(puesto, fecha));
       montoFinal = monto * descuento;
     }
     return montoFinal;
