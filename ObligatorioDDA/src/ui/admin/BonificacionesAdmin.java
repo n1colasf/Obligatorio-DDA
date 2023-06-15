@@ -1,23 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package ui.admin;
 
-/**
- *
- * @author Nicolas
- */
-public class BonificacionesAdmin extends javax.swing.JDialog {
+import controladores.ControladorBonificaciones;
+import controladores.VistaBonificacion;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import logica.dominio.Administrador;
+import logica.dominio.Asignacion;
+import logica.dominio.Propietario;
+import logica.dominio.Puesto;
+import logica.sistema.TipoBonificacion;
+
+public class BonificacionesAdmin extends javax.swing.JDialog implements VistaBonificacion {
+
+    private Administrador admin;
+    private ControladorBonificaciones controlador;
+    private Propietario propietario;
 
     /**
      * Creates new form BonificacionesAdmin
      */
-    public BonificacionesAdmin(java.awt.Frame parent, boolean modal) {
+    public BonificacionesAdmin(java.awt.Frame parent, boolean modal, Administrador admin) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
+        this.admin = admin;
+        this.controlador = new ControladorBonificaciones(this, this.admin);
     }
 
     /**
@@ -29,30 +37,33 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        precargaDatos1 = new inicio.PrecargaDatos();
+        precargaDatos2 = new inicio.PrecargaDatos();
         jLabel3 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        JComboBonif = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        JCedula = new javax.swing.JTextField();
+        JBuscar = new javax.swing.JToggleButton();
+        JComboPuestos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        JNombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        LoginAdmBtn4 = new javax.swing.JButton();
+        JTablaBonif = new javax.swing.JTable();
+        JAsignar = new javax.swing.JToggleButton();
+        JBtnCerrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CONSOLA DE ADMINISTRACIÓN");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,10 +71,10 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cvu-icon.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        JComboBonif.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        JComboBonif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                JComboBonifActionPerformed(evt);
             }
         });
 
@@ -71,25 +82,30 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
 
         jLabel4.setText("Cédula:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        JCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                JCedulaActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setText("BUSCAR");
+        JBuscar.setText("BUSCAR");
+        JBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBuscarActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        JComboPuestos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
         jLabel2.setText("Puestos:");
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Propietario:");
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel6.setText("Darío Campalans");
+        JNombre.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        JNombre.setText(" ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTablaBonif.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -97,30 +113,21 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                 "Bonificación", "Puesto"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTablaBonif);
 
-        jToggleButton2.setText("ASIGNAR");
-
-        LoginAdmBtn4.setText("CERRAR");
-        LoginAdmBtn4.addActionListener(new java.awt.event.ActionListener() {
+        JAsignar.setText("ASIGNAR");
+        JAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginAdmBtn4ActionPerformed(evt);
+                JAsignarActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("Consola");
-
-        jMenuItem1.setText("Emular tránsito");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Aprobar recargas");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Cerrar sesión");
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
+        JBtnCerrar.setText("CERRAR");
+        JBtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBtnCerrarActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,7 +150,7 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(JComboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel4)
@@ -151,24 +158,24 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(249, 249, 249)
-                                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(JBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGap(18, 18, 18)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(JComboBonif, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(JCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(LoginAdmBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JBtnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(JAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
+                        .addComponent(JNombre)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -178,29 +185,29 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JComboBonif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JComboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBuscar)
+                    .addComponent(JCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(JNombre))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2))
+                    .addComponent(JAsignar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LoginAdmBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JBtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel21)
                 .addContainerGap())
@@ -209,81 +216,104 @@ public class BonificacionesAdmin extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void JCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCedulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_JCedulaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void JComboBonifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JComboBonifActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_JComboBonifActionPerformed
 
-    private void LoginAdmBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdmBtn4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginAdmBtn4ActionPerformed
+    private void JBtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_JBtnCerrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BonificacionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BonificacionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BonificacionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BonificacionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        controlador.salir();
+    }//GEN-LAST:event_formWindowClosed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                BonificacionesAdmin dialog = new BonificacionesAdmin(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void JBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBuscarActionPerformed
+
+        int cedula = Integer.parseInt(JCedula.getText());
+        controlador.buscarPropietario(cedula);
+    }//GEN-LAST:event_JBuscarActionPerformed
+
+    private void JAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAsignarActionPerformed
+        String nombrePuesto = (String) JComboPuestos.getSelectedItem();
+        String tipoBonificacion = (String) JComboBonif.getSelectedItem();
+        controlador.asignarBonificacion(propietario, nombrePuesto, tipoBonificacion);
+    }//GEN-LAST:event_JAsignarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginAdmBtn4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JToggleButton JAsignar;
+    private javax.swing.JButton JBtnCerrar;
+    private javax.swing.JToggleButton JBuscar;
+    private javax.swing.JTextField JCedula;
+    private javax.swing.JComboBox<String> JComboBonif;
+    private javax.swing.JComboBox<String> JComboPuestos;
+    private javax.swing.JLabel JNombre;
+    private javax.swing.JTable JTablaBonif;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private inicio.PrecargaDatos precargaDatos1;
+    private inicio.PrecargaDatos precargaDatos2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarBonificaciones(ArrayList<TipoBonificacion> tipos) {
+        for (TipoBonificacion tb : tipos) {
+            JComboBonif.addItem(tb.getNombre());
+        }
+    }
+
+    @Override
+    public void mostrarPuestos(ArrayList<Puesto> puestos) {
+        for (Puesto p : puestos) {
+            JComboPuestos.addItem(p.getNombre());
+        }
+    }
+
+    @Override
+    public void mostrarInfoProp(Propietario p, ArrayList<Asignacion> a) {
+        if (p != null) {
+            this.propietario = p;
+            JNombre.setText(p.getNombreCompleto());
+            mostrarTablaBonif(a);
+        }
+
+    }
+
+    @Override
+    public void error(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    private void mostrarTablaBonif(ArrayList<Asignacion> a) {
+        if (a != null) {
+            DefaultTableModel datos = new DefaultTableModel();
+            datos.addColumn("Bonificacion");
+            datos.addColumn("Puesto");
+            datos.setRowCount(a.size());
+
+            int fila = 0;
+
+            for (Asignacion asignacion : a) {
+
+                datos.setValueAt(asignacion.getBonificacion().getNombre(), fila, 0);
+                datos.setValueAt(asignacion.getPuesto().getNombre(), fila, 1);
+                fila++;
+            }
+
+            JTablaBonif.setModel(datos);
+        }
+    }
+
 }

@@ -1,89 +1,162 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
- * template
- */
 package logica.sistema;
 
 import java.util.ArrayList;
+import logica.dominio.Administrador;
+import logica.dominio.Bonificacion;
 import logica.dominio.Categoria;
 import logica.dominio.Propietario;
 import logica.dominio.Puesto;
+import logica.dominio.Vehiculo;
 
-/**
- *
- * @author Nicolas
- */
 public class Fachada {
 
-  // INICIALIZAR CONTROLES
-  private SistemaAcceso sAcceso = new SistemaAcceso();
-  private SistemaPeaje sPeaje = new SistemaPeaje();
+    public enum eventos {
+        cambiosListaRecarga, cambiosListaTransito, cambiosListaBonificaciones, cambioListaNotificaciones
+    };
 
-  // INSTANCIA ESTATICA
-  private static Fachada instancia = new Fachada();
+    // INICIALIZAR CONTROLES
+    private SistemaAcceso sAcceso = new SistemaAcceso();
+    private SistemaPeaje sPeaje = new SistemaPeaje();
 
-  // GET INSTANCIA
-  public static Fachada getInstancia() { return instancia; }
+    // INSTANCIA ESTATICA
+    private static Fachada instancia = new Fachada();
 
-  // CONSTRUCTOR
-  private Fachada() {}
+    // GET INSTANCIA
+    public static Fachada getInstancia() {
+        return instancia;
+    }
 
-  // AGREGAR PROPIETARIO
-  public void agregarPropietario(int cedula, String pass,
-                                 String nombreCompleto) {
-    sAcceso.agregarPropietario(cedula, pass, nombreCompleto);
-  }
+    // CONSTRUCTOR
+    private Fachada() {
+    }
 
-  // AGREGAR ADMINISTRADOR
-  public void agregarAdministrador(int cedula, String pass,
-                                   String nombreCompleto) {
-    sAcceso.agregarAdministrador(cedula, pass, nombreCompleto);
-  }
+    // AGREGAR PROPIETARIO
+    public void agregarPropietario(int cedula, String pass,
+            String nombreCompleto) {
+        sAcceso.agregarPropietario(cedula, pass, nombreCompleto);
+    }
 
-  // LOGIN ADMINISTRADOR
-  public void loginAdministrador(int cedula, String pass) {
-    sAcceso.loginAdministrador(cedula, pass);
-  }
+    // AGREGAR ADMINISTRADOR
+    public void agregarAdministrador(int cedula, String pass,
+            String nombreCompleto) {
+        sAcceso.agregarAdministrador(cedula, pass, nombreCompleto);
+    }
 
-  // LOGIN PROPIETARIO
-  public void loginPropietario(int cedula, String pass) {
-    sAcceso.loginPropietario(cedula, pass);
-  }
+    // LOGIN ADMINISTRADOR
+    public Administrador loginAdministrador(int cedula, String pass) throws PeajeException {
+        Administrador admin = sAcceso.loginAdministrador(cedula, pass);
+        if (sAcceso.adminConectado(admin)) {
+            throw new PeajeException("Ud. Ya está logueado");
+        } else {
+            if (admin != null) {
+                sAcceso.agregarAdminConectado(admin);
+                return admin;
+            } else {
+                throw new PeajeException("Acceso denegado");
+            }
+        }
 
-  // AGREGAR PUESTO
-  public void agregarPuesto(String pass, String nombreCompleto) {
-    sPeaje.agregarPuesto(pass, nombreCompleto);
-  }
+    }
 
-  // AGREGAR RECARGA
-  public void agregarRecarga(int monto, Propietario propietario) {
-    sPeaje.agregarRecarga(monto, propietario);
-  }
+    // QUITAR SESIÓN ADMINISTRADOR
+    public void quitarSesionAdmin(Administrador admin) {
+        sAcceso.quitarSesionAdmin(admin);
+    }
 
-  // AGREGAR BONIFICACION
-  public void agregarTipoBonificacion(String nombre) {
-    sPeaje.agregarTipoBonificacion(nombre);
-  }
+    // LOGIN PROPIETARIO
+    public Propietario loginPropietario(int cedula, String pass) throws PeajeException {
+        if (String.valueOf(cedula) == "" || pass == "") {
+            throw new PeajeException("Ingrese valores");
+        }
+        Propietario prop = sAcceso.loginPropietario(cedula, pass);
+        if (prop != null) {
+            return prop;
+        } else {
+            throw new PeajeException("Acceso denegado");
+        }
+    }
 
-  // AGREGAR CATEGORIA
-  public void agregarCategoria(String nombre) {
-    sPeaje.agregarCategoria(nombre);
-  }
+    // AGREGAR PUESTO
+    public void agregarPuesto(String pass, String nombreCompleto) {
+        sPeaje.agregarPuesto(pass, nombreCompleto);
+    }
 
-  // GET CATEGORIAS
-  public ArrayList<Categoria> getCategorias() { return sPeaje.getCategorias(); }
+    // AGREGAR RECARGA
+    public void agregarRecarga(int monto, Propietario propietario) {
+        sPeaje.agregarRecarga(monto, propietario);
+    }
 
-  // GET PUESTOS
-  public ArrayList<Puesto> getPuestos() { return sPeaje.getPuestos(); }
+    // AGREGAR BONIFICACION
+    public void agregarTipoBonificacion(String nombre) {
+        sPeaje.agregarTipoBonificacion(nombre);
+    }
 
-  // GET PROPIETARIOS
-  public ArrayList<Propietario> getPropietarios() {
-    return sAcceso.getPropietarios();
-  }
+    public Bonificacion asignarTipoBonificacion(String tipoBonificacion) throws PeajeException {
+        if (!tipoBonificacion.trim().equals("")) {
+            return sPeaje.asignarTipoBonificacion(tipoBonificacion);
+        } else {
+            throw new PeajeException("Debe especificar una bonificación");
+        }
 
-  public ArrayList<TipoBonificacion> getTipoBonificaciones() {
-    return sPeaje.getTipoBonificaciones();
-  }
+    }
+
+    // AGREGAR CATEGORIA
+    public void agregarCategoria(String nombre) {
+        sPeaje.agregarCategoria(nombre);
+    }
+
+    // GET CATEGORIAS
+    public ArrayList<Categoria> getCategorias() {
+        return sPeaje.getCategorias();
+    }
+
+    // GET PUESTOS
+    public ArrayList<Puesto> getPuestos() {
+        return sPeaje.getPuestos();
+    }
+
+    public Puesto buscarPuestoNombre(String nombrePuesto) throws PeajeException {
+        if (!nombrePuesto.trim().equals("")) {
+            return sPeaje.buscarPuestoNombre(nombrePuesto);
+        } else {
+            throw new PeajeException("Debe especificar un puesto");
+        }
+    }
+
+    // GET PROPIETARIOS
+    public ArrayList<Propietario> getPropietarios() {
+        return sAcceso.getPropietarios();
+    }
+
+    public Propietario buscarPropietario(int cedula) throws PeajeException {
+        Propietario p = sAcceso.buscarPropietario(cedula);
+        if (p != null) {
+            return sAcceso.buscarPropietario(cedula);
+        } else {
+            throw new PeajeException("No existe el propietario");
+        }
+
+    }
+
+    public ArrayList<TipoBonificacion> getTipoBonificaciones() {
+        return sPeaje.getTipoBonificaciones();
+    }
+
+    public Vehiculo obtenerVehiculoMatricula(String matricula) throws PeajeException {
+        Vehiculo v = sAcceso.obtenerVehiculoMatricula(matricula);
+        if (v != null) {
+            return sAcceso.obtenerVehiculoMatricula(matricula);
+        } else {
+            throw new PeajeException("No existe el vehículo");
+        }
+
+    }
+
+    public int getSaldoMinimo() {
+        return sPeaje.getSaldoMinimo();
+    }
+
+    public void avisarAdminsConectados(Object evento) {
+        sAcceso.avisarAdminsConectados(evento);
+    }
 }

@@ -1,22 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package ui.admin;
 
-/**
- *
- * @author Nicolas
- */
-public class RecargasAdmin extends javax.swing.JDialog {
+import controladores.ControladorAsignarRecargas;
+import controladores.VistaAsignarRecargas;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import logica.dominio.Administrador;
+import logica.dominio.Recarga;
+
+public class RecargasAdmin extends javax.swing.JDialog implements VistaAsignarRecargas {
+
+    private ControladorAsignarRecargas controlador;
 
     /**
      * Creates new form AprobRecargaAdmin
      */
-    public RecargasAdmin(java.awt.Frame parent, boolean modal) {
+
+    public RecargasAdmin(java.awt.Frame parent, boolean modal, Administrador a) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.controlador = new ControladorAsignarRecargas(this, a);
     }
 
     /**
@@ -36,14 +40,9 @@ public class RecargasAdmin extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        JListaRecargas = new javax.swing.JTable();
         CerrarSesionPropBtn1 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,11 +57,18 @@ public class RecargasAdmin extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        CerrarSesionPropBtn.setBackground(new java.awt.Color(255, 255, 255));
         CerrarSesionPropBtn.setText("Cerrar sesión");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CONSOLA DE ADMINISTRACIÓN");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -73,17 +79,18 @@ public class RecargasAdmin extends javax.swing.JDialog {
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cvu-icon.png"))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        JListaRecargas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha", "Propietario", "Monto"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        JListaRecargas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(JListaRecargas);
+        JListaRecargas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        CerrarSesionPropBtn1.setBackground(new java.awt.Color(255, 255, 255));
         CerrarSesionPropBtn1.setText("CERRAR");
         CerrarSesionPropBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,21 +104,6 @@ public class RecargasAdmin extends javax.swing.JDialog {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("Consola");
-
-        jMenuItem1.setText("Emular tránsito");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Asignar bonificaciones");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Cerrar sesión");
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,72 +156,62 @@ public class RecargasAdmin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CerrarSesionPropBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionPropBtn1ActionPerformed
-        // TODO add your handling code here:
+        controlador.salir();
+        this.dispose();
+
     }//GEN-LAST:event_CerrarSesionPropBtn1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        int filaSeleccionada = JListaRecargas.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            Recarga recarga = (Recarga) JListaRecargas.getValueAt(filaSeleccionada, 2);
+            controlador.aprobarRecarga(recarga);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecargasAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecargasAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecargasAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecargasAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                RecargasAdmin dialog = new RecargasAdmin(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+        controlador.salir();
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CerrarSesionPropBtn;
     private javax.swing.JButton CerrarSesionPropBtn1;
+    private javax.swing.JTable JListaRecargas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarRecargas(ArrayList<Recarga> lista) {
+        DefaultTableModel datos = new DefaultTableModel();
+        datos.addColumn("Fecha");
+        datos.addColumn("Propietario");
+        datos.addColumn("Monto");
+
+        datos.setRowCount(lista.size());
+
+        int fila = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Recarga r : lista) {
+
+            datos.setValueAt(sdf.format(r.getFecha()), fila, 0);
+            datos.setValueAt(r.getPropietario().getNombreCompleto(), fila, 1);
+            datos.setValueAt(r, fila, 2);
+            fila = fila + 1;
+        }
+        JListaRecargas.setModel(datos);
+    }
 }

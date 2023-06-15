@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package inicio;
 
+import java.util.Date;
+import logica.dominio.Notificacion;
 import logica.dominio.Propietario;
 import logica.dominio.Puesto;
 import logica.sistema.Fachada;
 
-/**
- *
- * @author Nicolas
- */
 public class PrecargaDatos {
     
     private static final Fachada fachada = Fachada.getInstancia();
@@ -78,6 +73,7 @@ public class PrecargaDatos {
         
         propietario1.crearVehiculo("TDF-456", "Fiat Palio", "Azul", fachada.getCategorias().get(0)); 
         propietario1.crearVehiculo("AAX-248", "Chevrolet Corsa", "Rojo", fachada.getCategorias().get(0));  
+        propietario1.crearVehiculo("AAX-237", "Chevrolet Corsa", "Negro", fachada.getCategorias().get(0)); 
         
         propietario2.crearVehiculo("TVA-651", "Kawasaki Ninja", "Verde", fachada.getCategorias().get(1));
         

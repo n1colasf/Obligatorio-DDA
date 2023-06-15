@@ -1,31 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
- * template
- */
 package logica.dominio;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author Nicolas
- */
 public abstract class Bonificacion {
-  // ATRIBUTOS
-  private String nombre;
-  private Asignacion asignacion;
-  private ArrayList<Puesto> puestos = new ArrayList();
+    // ATRIBUTOS
 
-  // CONSTRUCTOR
-  public Bonificacion(String nombre) { this.nombre = nombre; }
+    private String nombre;
+    private Asignacion asignacion;
+    private ArrayList<Puesto> puestos = new ArrayList();
 
-  // GETTERS
-  public String getNombre() { return nombre; }
-  public Asignacion getAsignacion() { return asignacion; }
-  public ArrayList<Puesto> getPuestos() { return puestos; }
+    // CONSTRUCTOR
+    public Bonificacion(String nombre) {
+        this.nombre = nombre;
+    }
 
-  public abstract double calcular(Date fecha, boolean frecuente);
+    // GETTERS
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Asignacion getAsignacion() {
+        return asignacion;
+    }
+
+    public ArrayList<Puesto> getPuestos() {
+        return puestos;
+    }
+
+    public abstract double calcular(LocalDate fecha, boolean frecuente);
+
 }

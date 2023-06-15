@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package logica.dominio;
 
 import java.util.Date;
 
-/**
- *
- * @author Nicolas
- */
 public class Recarga {
     //ATRIBUTOS
     private int monto;
@@ -40,5 +33,10 @@ public class Recarga {
     //SETTERS
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(monto);
     }
 }
